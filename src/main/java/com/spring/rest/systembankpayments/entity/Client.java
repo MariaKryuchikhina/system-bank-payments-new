@@ -23,7 +23,9 @@ public class Client {
     private String email;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_deposit")
     private DepositAccount depositAccount;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private MainAccount mainAccount;
 
 }
