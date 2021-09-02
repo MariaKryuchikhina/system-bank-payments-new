@@ -14,39 +14,27 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
-    public Client getClients(@PathVariable long id){
-        Client client = new Client();
-        client.setIdClient(123456);
-        client.setEmail("qw12@gmail.com");
-        client.setFirstName("Maria");
-        client.setLastName("Qwe");
-        client.setPhoneNumber("454353");
-        return client;
-    }
-
     @RequestMapping("/")
     public List<Client> showAllClient(){
-        List<Client> allClient = clientService.findAll();
-        return allClient;
+        return clientService.findAll();
     }
 
-    @RequestMapping("/get/{id}")
+    @RequestMapping("/getClient/{id}")
     public Client getClient(@PathVariable long id){
-        Client client = clientService.findById(id);
-        return client;
+        return clientService.findById(id);
     }
 
-    @PostMapping("/add")
+    @PostMapping("/addNewClient")
     public Client addNewClient(@RequestBody Client client){
         return clientService.save(client);
     }
 
-    @PutMapping("/update")
+    @PutMapping("/updateClient")
     public Client updateClient(@RequestBody Client client){
         return  clientService.save(client);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/deleteClient/{id}")
     public void deleteClient(@PathVariable long id){
         clientService.deleteById(id);
     }

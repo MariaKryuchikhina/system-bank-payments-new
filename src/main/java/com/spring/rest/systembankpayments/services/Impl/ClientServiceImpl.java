@@ -16,7 +16,7 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     @Transactional
-    public List findAll() {
+    public List<Client> findAll() {
         return clientRepository.findAll();
     }
 
