@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Setter
@@ -28,5 +29,11 @@ public class DepositAccount {
 
     @Enumerated(EnumType.STRING)
     private TypeEnum type;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Client client;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<ReplenishmentHistory> history;
 
 }

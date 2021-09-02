@@ -1,13 +1,17 @@
 package com.spring.rest.systembankpayments.entity;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import javax.persistence.*;
+import java.util.List;
 
+@Getter
 @Entity
 @Setter
-@Getter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class Client {
 
     @Id
@@ -22,10 +26,12 @@ public class Client {
 
     private String email;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private DepositAccount depositAccount;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<DepositAccount> depositAccount;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private MainAccount mainAccount;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<MainAccount> mainAccount;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<CreditAccount> creditAccount;
 }

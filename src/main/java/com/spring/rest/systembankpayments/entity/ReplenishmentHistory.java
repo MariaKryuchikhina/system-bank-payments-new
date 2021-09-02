@@ -15,10 +15,17 @@ public class ReplenishmentHistory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String typeAccount;
-
     private Date transferDate;
 
     private double amount;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private DepositAccount depositAccount;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private MainAccount mainAccount;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private CreditAccount creditAccount;
 
 }

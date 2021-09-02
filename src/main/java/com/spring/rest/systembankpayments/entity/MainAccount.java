@@ -2,6 +2,7 @@ package com.spring.rest.systembankpayments.entity;
 
 import lombok.*;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Setter
@@ -22,4 +23,10 @@ public class MainAccount {
 
     @Enumerated(EnumType.STRING)
     private TypeEnum type;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Client client;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<ReplenishmentHistory> history;
 }
