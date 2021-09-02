@@ -1,10 +1,10 @@
 package com.spring.rest.systembankpayments.entity;
 
-public enum TypeEnum {
+public enum TypeAccount {
     CREDIT,
     DEPOSIT,
     MAIN;
 
-    TypeEnum() {
+    TypeAccount() {
     }
 }

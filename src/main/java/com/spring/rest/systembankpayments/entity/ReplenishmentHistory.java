@@ -9,11 +9,16 @@ import java.sql.Date;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class ReplenishmentHistory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    private TypeOperation type;
+
+    private String name;
 
     private Date transferDate;
 
@@ -27,5 +32,4 @@ public class ReplenishmentHistory {
 
     @ManyToOne(cascade = CascadeType.ALL)
     private CreditAccount creditAccount;
-
 }

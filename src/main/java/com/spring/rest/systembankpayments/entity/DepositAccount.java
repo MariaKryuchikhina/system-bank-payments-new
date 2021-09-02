@@ -28,7 +28,7 @@ public class DepositAccount {
     private int expirationDate; //срок действия
 
     @Enumerated(EnumType.STRING)
-    private TypeEnum type;
+    private TypeAccount type;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Client client;

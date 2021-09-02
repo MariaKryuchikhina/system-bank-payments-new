@@ -1,7 +1,6 @@
 package com.spring.rest.systembankpayments.controllers;
 
 import com.spring.rest.systembankpayments.entity.CreditAccount;
-import com.spring.rest.systembankpayments.entity.DepositAccount;
 import com.spring.rest.systembankpayments.services.CreditAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
