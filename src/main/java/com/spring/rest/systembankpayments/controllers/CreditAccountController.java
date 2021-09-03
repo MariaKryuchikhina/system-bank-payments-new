@@ -25,12 +25,12 @@ public class CreditAccountController {
     }
 
     @PostMapping("/addCreditAccount")
-    public CreditAccount addCreditAccount(@PathVariable CreditAccount credit){
+    public CreditAccount addCreditAccount(@RequestBody CreditAccount credit){
         return creditAccount.save(credit);
     }
 
     @PutMapping("/updateCreditAccount")
-    public CreditAccount updateCreditAccount(@PathVariable CreditAccount credit){
+    public CreditAccount updateCreditAccount(@RequestBody CreditAccount credit){
         return creditAccount.save(credit);
     }
 

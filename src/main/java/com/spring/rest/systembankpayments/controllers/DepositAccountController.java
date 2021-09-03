@@ -25,12 +25,12 @@ public class DepositAccountController {
     }
 
     @PostMapping("/addDepositAccount")
-    public DepositAccount addDepositAccount(@PathVariable DepositAccount deposit){
+    public DepositAccount addDepositAccount(@RequestBody DepositAccount deposit){
         return depositAccount.save(deposit);
     }
 
     @PutMapping("/updateDepositAccount")
-    public DepositAccount updateDepositAccount(@PathVariable DepositAccount deposit){
+    public DepositAccount updateDepositAccount(@RequestBody DepositAccount deposit){
         return depositAccount.save(deposit);
     }
 

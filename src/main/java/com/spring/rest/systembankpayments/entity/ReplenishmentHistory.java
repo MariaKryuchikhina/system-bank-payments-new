@@ -16,6 +16,7 @@ public class ReplenishmentHistory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Enumerated(EnumType.STRING)
     private TypeOperation type;
 
     private String name;

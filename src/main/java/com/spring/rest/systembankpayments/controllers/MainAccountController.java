@@ -26,12 +26,12 @@ public class MainAccountController {
     }
 
     @PostMapping("/addNewMainAccount")
-    public MainAccount addNewMainAccount(@PathVariable MainAccount main){
+    public MainAccount addNewMainAccount(@RequestBody MainAccount main){
         return mainAccount.save(main);
     }
 
     @PutMapping("/updateMainAccount")
-    public MainAccount updateMainAccount(@PathVariable MainAccount main){
+    public MainAccount updateMainAccount(@RequestBody MainAccount main){
         return mainAccount.save(main);
     }
 
