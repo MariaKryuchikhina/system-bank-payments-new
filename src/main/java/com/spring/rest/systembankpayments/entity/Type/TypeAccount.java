@@ -1,4 +1,4 @@
-package com.spring.rest.systembankpayments.entity;
+package com.spring.rest.systembankpayments.entity.Type;
 
 public enum TypeAccount {
     CREDIT,

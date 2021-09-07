@@ -1,5 +1,6 @@
 package com.spring.rest.systembankpayments.entity;
 
+import com.spring.rest.systembankpayments.entity.Type.TypeOperation;
 import lombok.*;
 import javax.persistence.*;
 import java.sql.Date;
@@ -8,8 +9,15 @@ import java.sql.Date;
 @Setter
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
-public abstract class History {
+
+public class History {
+
+    public History(long id, String name, Date transferDate, TypeOperation type) {
+        this.id = id;
+        this.name = name;
+        this.transferDate = transferDate;
+        this.type = type;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
