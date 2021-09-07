@@ -11,8 +11,6 @@ import javax.persistence.*;
 @Builder
 public class AccountHistory extends History{
 
-    @Enumerated(EnumType.STRING)
-    private TypeOperation type;
     private boolean condition; //состояние: открыт или закрыт
 
     @ManyToOne(cascade = CascadeType.ALL)

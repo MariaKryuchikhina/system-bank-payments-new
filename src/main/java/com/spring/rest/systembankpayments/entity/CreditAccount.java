@@ -10,6 +10,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class CreditAccount extends Account{
 
+    @Column(name = "CreditLimit")
     private double creditLimit; //кредитный лимит
 
     private double interestRate; //процентная ставка

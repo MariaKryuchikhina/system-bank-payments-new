@@ -16,4 +16,6 @@ public abstract class History {
     private long id;
     private String name;
     private Date transferDate;
+    @Enumerated(EnumType.STRING)
+    private TypeOperation type;
 }
