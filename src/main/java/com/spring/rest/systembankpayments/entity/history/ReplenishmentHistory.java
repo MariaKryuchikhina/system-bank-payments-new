@@ -1,15 +1,19 @@
-package com.spring.rest.systembankpayments.entity;
+package com.spring.rest.systembankpayments.entity.history;
 
+import com.spring.rest.systembankpayments.entity.CreditAccount;
+import com.spring.rest.systembankpayments.entity.DepositAccount;
+import com.spring.rest.systembankpayments.entity.MainAccount;
 import com.spring.rest.systembankpayments.entity.Type.TypeOperation;
+import com.spring.rest.systembankpayments.entity.history.History;
 import lombok.*;
 import javax.persistence.*;
 import java.sql.Date;
 
-@Entity
+
 @Setter
 @Getter
 @NoArgsConstructor
-public class ReplenishmentHistory extends History{
+public class ReplenishmentHistory extends History {
 
     @Builder
     public ReplenishmentHistory(long id, String name, Date transferDate, TypeOperation type,

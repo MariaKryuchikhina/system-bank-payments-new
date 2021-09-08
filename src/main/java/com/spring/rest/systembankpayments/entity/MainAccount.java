@@ -9,11 +9,12 @@ import java.util.List;
 @Setter
 @Getter
 @NoArgsConstructor
+@Table(name = "main_account")
 public class MainAccount extends Account{
 
     @Builder
     public MainAccount(long id, String number, double amount, int expirationDate, TypeAccount type,
-                       Client client, List<Account> history) {
-        super(id, number, amount, expirationDate, type, client, history);
+                       Client client) {
+        super(id, number, amount, expirationDate, type, client);
     }
 }
