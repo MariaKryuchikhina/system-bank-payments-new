@@ -2,7 +2,6 @@ package com.spring.rest.systembankpayments.controllers;
 
 import com.spring.rest.systembankpayments.entity.CreditAccount;
 import com.spring.rest.systembankpayments.services.CreditAccountService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,8 +10,11 @@ import java.util.List;
 @RequestMapping("/creditAccount")
 public class CreditAccountController {
 
-    @Autowired
-    private CreditAccountService creditAccount;
+    private final CreditAccountService creditAccount;
+
+    public CreditAccountController(CreditAccountService creditAccount) {
+        this.creditAccount = creditAccount;
+    }
 
     @RequestMapping("/getCreditAccount/{id}")
     public CreditAccount getCreditAccount(@PathVariable long id){

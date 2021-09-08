@@ -1,9 +1,7 @@
 package com.spring.rest.systembankpayments.controllers;
 
 import com.spring.rest.systembankpayments.entity.MainAccount;
-import com.spring.rest.systembankpayments.services.ClientService;
 import com.spring.rest.systembankpayments.services.MainAccountService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,8 +10,11 @@ import java.util.List;
 @RequestMapping("/mainAccount")
 public class MainAccountController {
 
-    @Autowired
-    private MainAccountService mainAccount;
+    private final MainAccountService mainAccount;
+
+    public MainAccountController(MainAccountService mainAccount) {
+        this.mainAccount = mainAccount;
+    }
 
     @RequestMapping("/getMainAccount/{id}")
     public MainAccount getMainAccount(@PathVariable long id){

@@ -2,7 +2,6 @@ package com.spring.rest.systembankpayments.controllers;
 
 import com.spring.rest.systembankpayments.entity.DepositAccount;
 import com.spring.rest.systembankpayments.services.DepositAccountService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,8 +10,11 @@ import java.util.List;
 @RequestMapping("/depositAccount")
 public class DepositAccountController {
 
-    @Autowired
-    private DepositAccountService depositAccount;
+    private final DepositAccountService depositAccount;
+
+    public DepositAccountController(DepositAccountService depositAccount) {
+        this.depositAccount = depositAccount;
+    }
 
     @RequestMapping("/getDepositAccount/{id}")
     public DepositAccount getDepositAccount(@PathVariable long id){

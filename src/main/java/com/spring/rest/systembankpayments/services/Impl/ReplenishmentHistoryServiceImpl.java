@@ -1,6 +1,6 @@
 package com.spring.rest.systembankpayments.services.Impl;
 
-import com.spring.rest.systembankpayments.entity.ReplenishmentHistory;
+import com.spring.rest.systembankpayments.entity.history.ReplenishmentHistory;
 import com.spring.rest.systembankpayments.repositories.ReplenishmentHistoryRepository;
 import com.spring.rest.systembankpayments.services.ReplenishmentHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
