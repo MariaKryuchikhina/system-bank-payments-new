@@ -3,6 +3,7 @@ package com.spring.rest.systembankpayments.services.Impl;
 import com.spring.rest.systembankpayments.entity.DepositAccount;
 import com.spring.rest.systembankpayments.repositories.DepositAccountRepository;
 import com.spring.rest.systembankpayments.services.DepositAccountService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,10 +11,11 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class DepositAccountServiceImpl implements DepositAccountService {
 
-    @Autowired
-    private DepositAccountRepository depositAccountRepository;
+
+    private final DepositAccountRepository depositAccountRepository;
 
     @Override
     @Transactional

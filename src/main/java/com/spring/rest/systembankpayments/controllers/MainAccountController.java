@@ -2,19 +2,17 @@ package com.spring.rest.systembankpayments.controllers;
 
 import com.spring.rest.systembankpayments.entity.MainAccount;
 import com.spring.rest.systembankpayments.services.MainAccountService;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/mainAccount")
+@AllArgsConstructor
 public class MainAccountController {
 
     private final MainAccountService mainAccount;
-
-    public MainAccountController(MainAccountService mainAccount) {
-        this.mainAccount = mainAccount;
-    }
 
     @GetMapping("/getMainAccount/{id}")
     public MainAccount getMainAccount(@PathVariable long id){

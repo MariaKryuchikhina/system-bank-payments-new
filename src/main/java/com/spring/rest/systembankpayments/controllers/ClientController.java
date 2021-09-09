@@ -2,18 +2,16 @@ package com.spring.rest.systembankpayments.controllers;
 
 import com.spring.rest.systembankpayments.entity.Client;
 import com.spring.rest.systembankpayments.services.ClientService;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
 @RequestMapping("/client")
+@AllArgsConstructor
 public class ClientController {
 
     private final ClientService clientService;
-
-    public ClientController(ClientService clientService) {
-        this.clientService = clientService;
-    }
 
     @GetMapping
     public List<Client> showAllClient(){

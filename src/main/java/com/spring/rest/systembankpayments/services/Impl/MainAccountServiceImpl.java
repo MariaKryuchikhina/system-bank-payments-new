@@ -3,16 +3,17 @@ package com.spring.rest.systembankpayments.services.Impl;
 import com.spring.rest.systembankpayments.entity.MainAccount;
 import com.spring.rest.systembankpayments.repositories.MainAccountRepository;
 import com.spring.rest.systembankpayments.services.MainAccountService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class MainAccountServiceImpl implements MainAccountService {
 
-    @Autowired
-    private MainAccountRepository mainAccountRepository;
+    private final MainAccountRepository mainAccountRepository;
 
     @Override
     @Transactional

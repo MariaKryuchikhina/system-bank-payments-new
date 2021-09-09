@@ -2,19 +2,17 @@ package com.spring.rest.systembankpayments.controllers;
 
 import com.spring.rest.systembankpayments.entity.CreditAccount;
 import com.spring.rest.systembankpayments.services.CreditAccountService;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/creditAccount")
+@AllArgsConstructor
 public class CreditAccountController {
 
     private final CreditAccountService creditAccount;
-
-    public CreditAccountController(CreditAccountService creditAccount) {
-        this.creditAccount = creditAccount;
-    }
 
     @RequestMapping("/getCreditAccount/{id}")
     public CreditAccount getCreditAccount(@PathVariable long id){

@@ -3,6 +3,7 @@ package com.spring.rest.systembankpayments.services.Impl;
 import com.spring.rest.systembankpayments.entity.Client;
 import com.spring.rest.systembankpayments.repositories.ClientRepository;
 import com.spring.rest.systembankpayments.services.ClientService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,10 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class ClientServiceImpl implements ClientService {
 
-    @Autowired
-    private ClientRepository clientRepository;
+    private final ClientRepository clientRepository;
 
     @Override
     @Transactional
