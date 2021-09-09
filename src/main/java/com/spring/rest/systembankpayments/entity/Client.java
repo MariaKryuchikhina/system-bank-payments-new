@@ -1,15 +1,13 @@
 package com.spring.rest.systembankpayments.entity;
 
 import lombok.*;
-
 import javax.persistence.*;
 import java.util.List;
 
-@ToString
 @Getter
 @Entity
 @Setter
-@AllArgsConstructor
+//@AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "client")
 public class Client {
@@ -19,10 +17,10 @@ public class Client {
     @Column(name = "id")
     private long idClient;
 
-    @Column(name = "firstname")
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "lastname")
+    @Column(name = "last_name")
     private String lastName;
 
     @Column(name = "phone_number")
@@ -31,12 +29,15 @@ public class Client {
     @Column(name = "email")
     private String email;
 
-    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "client_id")
     private List<DepositAccount> depositAccount;
 
-    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "client_id")
     private List<MainAccount> mainAccount;
 
-    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "client_id")
     private List<CreditAccount> creditAccount;
 }

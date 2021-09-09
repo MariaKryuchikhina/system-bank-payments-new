@@ -16,12 +16,12 @@ public class MainAccountController {
         this.mainAccount = mainAccount;
     }
 
-    @RequestMapping("/getMainAccount/{id}")
+    @GetMapping("/getMainAccount/{id}")
     public MainAccount getMainAccount(@PathVariable long id){
         return mainAccount.findById(id);
     }
 
-    @RequestMapping("/showAllMainAccount")
+    @GetMapping("/showAllMainAccount")
     public List<MainAccount> showAllMainAccount(){
         return mainAccount.findAll();
     }

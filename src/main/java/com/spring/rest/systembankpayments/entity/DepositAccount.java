@@ -6,6 +6,7 @@ import lombok.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -16,11 +17,15 @@ import java.util.List;
 public class DepositAccount extends Account{
 
     @Builder
-    public DepositAccount(long id, String number, double amount, int expirationDate, TypeAccount type,
-                          Client client, double interestRate) {
-        super(id, number, amount, expirationDate, type, client);
+    public DepositAccount(long id, String number, Date expirationDate, TypeAccount type, int amount, double interestRate) {
+        super(id, number, expirationDate, type);
+        this.amount = amount;
         this.interestRate = interestRate;
     }
+
+    @Column(name = "amount")
+    private int amount;
+
     @Column
     private double interestRate; //процентная ставка
 }

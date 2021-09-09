@@ -6,7 +6,4 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 public interface DepositAccountRepository extends JpaRepository<DepositAccount, Long> {
 
-    //вывести сумму, ставку, историю пополнения
-    DepositAccount getDepositAccountInformation(@PathVariable long id);
-
 }

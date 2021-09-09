@@ -4,6 +4,7 @@ import com.spring.rest.systembankpayments.entity.Type.TypeAccount;
 import com.spring.rest.systembankpayments.entity.history.History;
 import lombok.*;
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -14,10 +15,10 @@ import java.util.List;
 public class CreditAccount extends Account{
 
     @Builder
-    public CreditAccount(long id, String number, double amount, int expirationDate, TypeAccount type, Client client,
-                         double creditLimit, double interestRate, double currentDebt,
-                         double accruedInterest) {
-        super(id, number, amount, expirationDate, type, client);
+    public CreditAccount(long id, String number, Date expirationDate,
+                         TypeAccount type, int creditLimit, double interestRate,
+                         int currentDebt, double accruedInterest) {
+        super(id, number, expirationDate, type);
         this.creditLimit = creditLimit;
         this.interestRate = interestRate;
         this.currentDebt = currentDebt;
@@ -25,14 +26,14 @@ public class CreditAccount extends Account{
     }
 
     @Column(name = "credit_limit")
-    private double creditLimit; //кредитный лимит
+    private int creditLimit; //кредитный лимит
 
-    @Column
+    @Column(name = "interest_rate")
     private double interestRate; //процентная ставка
 
-    @Column
-    private double currentDebt; //текущая задолженность
+    @Column(name = "current_debt")
+    private int currentDebt; //текущая задолженность
 
-    @Column
+    @Column(name = "accrued_interest")
     private double accruedInterest; //начисленные проценты
 }

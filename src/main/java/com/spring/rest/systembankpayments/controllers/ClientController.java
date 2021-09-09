@@ -15,7 +15,7 @@ public class ClientController {
         this.clientService = clientService;
     }
 
-    @RequestMapping("/")
+    @GetMapping
     public List<Client> showAllClient(){
         return clientService.findAll();
     }
