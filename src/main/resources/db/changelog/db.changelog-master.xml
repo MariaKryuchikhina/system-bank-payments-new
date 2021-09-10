@@ -5,18 +5,10 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <preConditions>
-        <dbms type="postgresql"/>
-    </preConditions>
 
-    <changeSet id="0" author="maria_kryuchikhina">
-        <tagDatabase tag="db_init"/>
-    </changeSet>
-
-    <include file="v-1.0/db.changelog-v.1.0.xml" relativeToChangelogFile="true"/>
-
-    <changeSet id="4" author="maria_kryuchikhina">
-        <tagDatabase tag="v.1.0"/>
-    </changeSet>
+    <include file="classpath:/db/changelog/migrations/01-create-client-table.sql"/>
+    <include file="classpath:/db/changelog/migrations/02-create-main-account-table.sql"/>
+    <include file="classpath:/db/changelog/migrations/03-create-deposit-account-table.sql"/>
+    <include file="classpath:/db/changelog/migrations/04-create-credit-account-table.sql"/>
 
 </databaseChangeLog>
