@@ -68,7 +68,6 @@ class MainAccountServiceImplTest {
     }
 
     @Test
-    @Disabled
     void deleteById() {
         long id = 5L;
         mainAccountService.deleteById(id);

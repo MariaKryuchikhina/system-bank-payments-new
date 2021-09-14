@@ -54,8 +54,9 @@ class ClientServiceImplTest {
 
     @Test
     void findById() {
-        clientService.findById(1L);
-        verify(clientRepository).findById(1L);
+        long id = 1L;
+        clientService.findById(id);
+        verify(clientRepository).findById(id);
 //        Assertions.assertEquals((clientRepository.findById(c1.getIdClient())), c1);
 //        Assertions.assertNotNull(clientRepository.findById(12L));
 //        assertThat(clientRepository.findById(c1.getIdClient())).isEqualTo(c1);

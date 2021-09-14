@@ -18,7 +18,7 @@ public class ClientController {
         return clientService.findAll();
     }
 
-    @RequestMapping("/getClient/{id}")
+    @GetMapping("/getClient/{id}")
     public Client getClient(@PathVariable long id){
         return clientService.findById(id);
     }
