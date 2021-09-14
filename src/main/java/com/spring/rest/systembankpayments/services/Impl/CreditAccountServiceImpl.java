@@ -35,12 +35,6 @@ public class CreditAccountServiceImpl implements CreditAccountService {
 
     @Override
     @Transactional
-    public void delete(CreditAccount object) {
-        creditAccountRepository.delete(object);
-    }
-
-    @Override
-    @Transactional
     public void deleteById(Long id) {
         creditAccountRepository.deleteById(id);
     }

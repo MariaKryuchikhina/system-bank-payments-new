@@ -36,12 +36,6 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     @Transactional
-    public void delete(Client object) {
-        clientRepository.delete(object);
-    }
-
-    @Override
-    @Transactional
     public void deleteById(Long id) {
         clientRepository.deleteById(id);
     }

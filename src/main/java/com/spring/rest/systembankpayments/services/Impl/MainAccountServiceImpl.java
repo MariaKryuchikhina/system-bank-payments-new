@@ -35,12 +35,6 @@ public class MainAccountServiceImpl implements MainAccountService {
 
     @Override
     @Transactional
-    public void delete(MainAccount object) {
-        mainAccountRepository.delete(object);
-    }
-
-    @Override
-    @Transactional
     public void deleteById(Long id) {
         mainAccountRepository.deleteById(id);
     }

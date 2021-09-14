@@ -37,12 +37,6 @@ public class DepositAccountServiceImpl implements DepositAccountService {
 
     @Override
     @Transactional
-    public void delete(DepositAccount object) {
-        depositAccountRepository.delete(object);
-    }
-
-    @Override
-    @Transactional
     public void deleteById(Long id) {
         depositAccountRepository.deleteById(id);
     }

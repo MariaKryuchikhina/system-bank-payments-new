@@ -10,7 +10,17 @@ import java.util.List;
 //@AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "client")
+
 public class Client {
+
+    @Builder
+    public Client(long idClient, String firstName, String lastName, String phoneNumber, String email) {
+        this.idClient = idClient;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

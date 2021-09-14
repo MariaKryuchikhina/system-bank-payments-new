@@ -33,11 +33,6 @@
 //        return history.save(object);
 //    }
 //
-//    @Override
-//    @Transactional
-//    public void delete(ReplenishmentHistory object) {
-//        history.delete(object);
-//    }
 //
 //    @Override
 //    @Transactional

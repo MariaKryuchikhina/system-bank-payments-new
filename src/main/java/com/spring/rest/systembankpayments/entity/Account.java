@@ -5,7 +5,6 @@ import com.spring.rest.systembankpayments.entity.history.History;
 import lombok.*;
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @MappedSuperclass
 @Setter
