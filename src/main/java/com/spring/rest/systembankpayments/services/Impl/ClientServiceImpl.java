@@ -4,11 +4,14 @@ import com.spring.rest.systembankpayments.entity.Client;
 import com.spring.rest.systembankpayments.repositories.ClientRepository;
 import com.spring.rest.systembankpayments.services.ClientService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -36,7 +39,8 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     @Transactional
-    public void deleteById(Long id) {
+    public Client deleteById(Long id) {
         clientRepository.deleteById(id);
+        return null;
     }
 }

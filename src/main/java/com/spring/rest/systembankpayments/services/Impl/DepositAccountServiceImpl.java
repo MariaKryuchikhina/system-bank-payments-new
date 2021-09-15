@@ -4,7 +4,6 @@ import com.spring.rest.systembankpayments.entity.DepositAccount;
 import com.spring.rest.systembankpayments.repositories.DepositAccountRepository;
 import com.spring.rest.systembankpayments.services.DepositAccountService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -37,7 +36,8 @@ public class DepositAccountServiceImpl implements DepositAccountService {
 
     @Override
     @Transactional
-    public void deleteById(Long id) {
+    public DepositAccount deleteById(Long id) {
         depositAccountRepository.deleteById(id);
+        return null;
     }
 }
