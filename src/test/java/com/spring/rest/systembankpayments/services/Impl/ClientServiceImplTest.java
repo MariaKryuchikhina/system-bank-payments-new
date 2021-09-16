@@ -59,9 +59,6 @@ class ClientServiceImplTest {
         long id = 1L;
         clientService.findById(id);
         verify(clientRepository).findById(id);
-//        Assertions.assertEquals((clientService.findById(client1.getIdClient())), client1);
-//        Assertions.assertNotNull(clientRepository.findById(12L));
-//        assertThat(clientService.findById(client1.getIdClient())).isEqualTo(client1);
     }
 
     @Test
@@ -98,8 +95,6 @@ class ClientServiceImplTest {
     @Test
     void deleteById() {
         long id = 5;
-//        given(clientRepository.existsById(id)).willReturn(false);
-
         clientService.deleteById(id);
         verify(clientRepository).deleteById(id);
     }

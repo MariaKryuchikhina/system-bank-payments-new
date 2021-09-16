@@ -22,13 +22,23 @@ public class ClientServiceImpl implements ClientService {
     @Override
     @Transactional
     public List<Client> findAll() {
-        return clientRepository.findAll();
+        List<Client> all = clientRepository.findAll();
+//        all.forEach(client -> client.setLastName(client.getLastName().toUpperCase(Locale.ROOT)));
+//        all.forEach(client -> client.setFirstName(client.getFirstName().toUpperCase(Locale.ROOT)));
+//        all.forEach(client -> client.setEmail(client.getEmail().toUpperCase(Locale.ROOT)));
+        return all;
     }
 
     @Override
     @Transactional
     public Client findById(Long id) {
-        return clientRepository.findById(id).orElse(null);
+        Client client = clientRepository.findById(id).orElse(null);
+        assert client != null;
+        client.setFirstName(client.getFirstName().toUpperCase(Locale.ROOT));
+        client.setLastName(client.getLastName().toUpperCase(Locale.ROOT));
+        client.setEmail(client.getEmail().toUpperCase(Locale.ROOT));
+
+        return client;
     }
 
     @Override

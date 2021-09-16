@@ -10,9 +10,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 import static org.mockito.Mockito.verify;
 import static org.junit.jupiter.api.Assertions.*;
@@ -24,6 +27,19 @@ class CreditAccountServiceImplTest {
     private CreditAccountRepository creditAccountRepository;
     private CreditAccountService creditAccountService;
 
+    Date date1 = new Date();
+    Date date2 = new Date();
+    Date date3 = new Date();
+
+    CreditAccount creditAccount1 = new CreditAccount(1L, "786534783952", date1, TypeAccount.CREDIT,
+            3000000, 0.15, 500000, 0.20);
+    CreditAccount creditAccount2 = new CreditAccount(2L, "090754342435", date2, TypeAccount.CREDIT,
+            290000, 0.08, 4600000, 0.15);
+    CreditAccount creditAccount3 = new CreditAccount(3L, "864354689876", date3, TypeAccount.CREDIT,
+            50000, 0.05, 4540, 0.10);
+
+    List<CreditAccount> creditAccountsLists = List.of(creditAccount1, creditAccount2, creditAccount3);
+
     @BeforeEach
     void setUp() {
         creditAccountService = new CreditAccountServiceImpl(creditAccountRepository);
@@ -31,15 +47,23 @@ class CreditAccountServiceImplTest {
 
     @Test
     void findAll() {
+        Mockito.when(creditAccountService.findAll()).thenReturn(creditAccountsLists);
         creditAccountService.findAll();
         verify(creditAccountRepository).findAll();
     }
 
     @Test
     void findById() {
+        Mockito.when(creditAccountRepository.findById(creditAccount1.getId())).thenReturn(Optional.of(creditAccount1));
+
         long id = 1L;
         creditAccountService.findById(id);
         verify(creditAccountRepository).findById(id);
+    }
+
+    @Test
+    void findByIdNotFound(){
+
     }
 
     @Test
