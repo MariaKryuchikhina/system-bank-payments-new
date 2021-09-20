@@ -1,6 +1,7 @@
 package com.spring.rest.systembankpayments.entity;
 
 import lombok.*;
+import lombok.experimental.Accessors;
 import javax.persistence.*;
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
 //@AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "client")
-
+@Accessors(chain = true)
 public class Client {
 
     @Builder
