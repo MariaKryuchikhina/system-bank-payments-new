@@ -1,9 +1,6 @@
 package com.spring.rest.systembankpayments.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.spring.rest.systembankpayments.entity.CreditAccount;
-import com.spring.rest.systembankpayments.entity.DepositAccount;
-import com.spring.rest.systembankpayments.entity.MainAccount;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.List;
@@ -28,11 +25,11 @@ public class ClientAllDto {
     private String email;
 
     @JsonProperty("mainAccounts")
-    private List<MainAccount> mainAccounts;
+    private List<MainAccountDto> mainAccounts;
 
     @JsonProperty("depositAccounts")
-    private List<DepositAccount> depositAccounts;
+    private List<DepositAccountDto> depositAccounts;
 
     @JsonProperty("creditAccounts")
-    private List<CreditAccount> creditAccounts;
+    private List<CreditAccountDto> creditAccounts;
 }

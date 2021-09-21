@@ -1,9 +1,13 @@
 package com.spring.rest.systembankpayments.controllers;
 
+import com.spring.rest.systembankpayments.dto.ClientAllDto;
+import com.spring.rest.systembankpayments.dto.ClientDto;
 import com.spring.rest.systembankpayments.entity.Client;
+import com.spring.rest.systembankpayments.mapper.ClientMapper;
 import com.spring.rest.systembankpayments.services.ClientService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -12,15 +16,23 @@ import java.util.List;
 public class ClientController {
 
     private final ClientService clientService;
+    private ClientMapper clientMapper;
 
     @GetMapping
-    public List<Client> showAllClient(){
-        return clientService.findAll();
+    public List<ClientDto> showAllClient(){
+        return clientMapper.clientsToClientDto(clientService.findAll());
     }
 
     @GetMapping("/getClient/{id}")
-    public Client getClient(@PathVariable long id){
-        return clientService.findById(id);
+    public ClientDto getClient(@PathVariable long id){
+
+        return clientMapper.clientToClientDto(clientService.findById(id));
+    }
+
+    @GetMapping("/getFullClient/{id}")
+    public ClientAllDto getFullClient(@PathVariable long id){
+
+        return clientMapper.clientAllToClientDto(clientService.findById(id));
     }
 
     @PostMapping("/addNewClient")

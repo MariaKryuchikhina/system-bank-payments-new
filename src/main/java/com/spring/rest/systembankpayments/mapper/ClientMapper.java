@@ -7,12 +7,17 @@ import com.spring.rest.systembankpayments.entity.DepositAccount;
 import com.spring.rest.systembankpayments.entity.MainAccount;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.factory.Mappers;
+import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper()
 public interface ClientMapper {
 
+    ClientMapper INSTANCE = Mappers.getMapper(ClientMapper.class);
 
     ClientDto clientToClientDto(Client client);
+
+    List<ClientDto> clientsToClientDto(List<Client> clients);
 
     @Mapping(target = "creditAccounts", source = "client.creditAccount")
     @Mapping(target = "depositAccounts", source = "client.depositAccount")
@@ -21,7 +26,13 @@ public interface ClientMapper {
 
     MainAccountDto mainAccountToClientDto(MainAccount mainAccount);
 
+    List<MainAccountDto> mainAccountsDto(List<MainAccount> mainAccounts);
+
     DepositAccountDto depositAccountToClientDto(DepositAccount depositAccount);
 
+    List<DepositAccountDto> depositAccountsDto(List<DepositAccount> depositAccounts);
+
     CreditAccountDto creditAccountToClientDto(CreditAccount creditAccount);
+
+    List<CreditAccountDto> creditAccountsDto(List<CreditAccount> creditAccounts);
 }

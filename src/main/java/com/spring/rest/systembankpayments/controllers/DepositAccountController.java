@@ -1,6 +1,8 @@
 package com.spring.rest.systembankpayments.controllers;
 
+import com.spring.rest.systembankpayments.dto.DepositAccountDto;
 import com.spring.rest.systembankpayments.entity.DepositAccount;
+import com.spring.rest.systembankpayments.mapper.ClientMapper;
 import com.spring.rest.systembankpayments.services.DepositAccountService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -13,15 +15,16 @@ import java.util.List;
 public class DepositAccountController {
 
     private final DepositAccountService depositAccount;
+    private ClientMapper clientMapper;
 
     @RequestMapping("/getDepositAccount/{id}")
-    public DepositAccount getDepositAccount(@PathVariable long id){
-        return depositAccount.findById(id);
+    public DepositAccountDto getDepositAccount(@PathVariable long id){
+        return clientMapper.depositAccountToClientDto(depositAccount.findById(id));
     }
 
     @RequestMapping("/showAllDepositAccount")
-    public List<DepositAccount> showAllDepositAccount(){
-        return depositAccount.findAll();
+    public List<DepositAccountDto> showAllDepositAccount(){
+        return clientMapper.depositAccountsDto(depositAccount.findAll());
     }
 
     @PostMapping("/addDepositAccount")

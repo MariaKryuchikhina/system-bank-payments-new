@@ -1,6 +1,8 @@
 package com.spring.rest.systembankpayments.controllers;
 
+import com.spring.rest.systembankpayments.dto.MainAccountDto;
 import com.spring.rest.systembankpayments.entity.MainAccount;
+import com.spring.rest.systembankpayments.mapper.ClientMapper;
 import com.spring.rest.systembankpayments.services.MainAccountService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -13,15 +15,16 @@ import java.util.List;
 public class MainAccountController {
 
     private final MainAccountService mainAccount;
+    private ClientMapper clientMapper;
 
     @GetMapping("/getMainAccount/{id}")
-    public MainAccount getMainAccount(@PathVariable long id){
-        return mainAccount.findById(id);
+    public MainAccountDto getMainAccount(@PathVariable long id){
+        return clientMapper.mainAccountToClientDto(mainAccount.findById(id));
     }
 
     @GetMapping("/showAllMainAccount")
-    public List<MainAccount> showAllMainAccount(){
-        return mainAccount.findAll();
+    public List<MainAccountDto> showAllMainAccount(){
+        return clientMapper.mainAccountsDto(mainAccount.findAll());
     }
 
     @PostMapping("/addNewMainAccount")

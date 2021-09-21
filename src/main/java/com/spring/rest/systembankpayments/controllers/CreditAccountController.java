@@ -1,6 +1,8 @@
 package com.spring.rest.systembankpayments.controllers;
 
+import com.spring.rest.systembankpayments.dto.CreditAccountDto;
 import com.spring.rest.systembankpayments.entity.CreditAccount;
+import com.spring.rest.systembankpayments.mapper.ClientMapper;
 import com.spring.rest.systembankpayments.services.CreditAccountService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -13,15 +15,16 @@ import java.util.List;
 public class CreditAccountController {
 
     private final CreditAccountService creditAccount;
+    private ClientMapper clientMapper;
 
     @RequestMapping("/getCreditAccount/{id}")
-    public CreditAccount getCreditAccount(@PathVariable long id){
-        return creditAccount.findById(id);
+    public CreditAccountDto getCreditAccount(@PathVariable long id){
+        return clientMapper.creditAccountToClientDto(creditAccount.findById(id));
     }
 
     @RequestMapping("/showAllCreditAccount")
-    public List<CreditAccount> showAllCreditAccount(){
-        return creditAccount.findAll();
+    public List<CreditAccountDto> showAllCreditAccount(){
+        return clientMapper.creditAccountsDto(creditAccount.findAll());
     }
 
     @PostMapping("/addCreditAccount")

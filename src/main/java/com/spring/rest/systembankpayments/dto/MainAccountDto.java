@@ -7,22 +7,32 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Null;
+import java.util.Date;
 
 @Getter
 @Setter
-@NoArgsConstructor
 public class MainAccountDto {
 
     @JsonProperty("id")
+    @Null
     private long id;
 
     @JsonProperty("number")
+    @NotBlank
     private String number;
 
     @JsonProperty("type")
+    @NotBlank
     @Enumerated(EnumType.STRING)
     private TypeAccount type;
 
+    @JsonProperty("expirationDate")
+    @NotBlank
+    private Date expirationDate;
+
     @JsonProperty("amount")
+    @NotBlank
     private int amount;
 }

@@ -23,9 +23,6 @@ public class ClientServiceImpl implements ClientService {
     @Transactional
     public List<Client> findAll() {
         List<Client> all = clientRepository.findAll();
-//        all.forEach(client -> client.setLastName(client.getLastName().toUpperCase(Locale.ROOT)));
-//        all.forEach(client -> client.setFirstName(client.getFirstName().toUpperCase(Locale.ROOT)));
-//        all.forEach(client -> client.setEmail(client.getEmail().toUpperCase(Locale.ROOT)));
         return all;
     }
 
@@ -34,9 +31,9 @@ public class ClientServiceImpl implements ClientService {
     public Client findById(Long id) {
         Client client = clientRepository.findById(id).orElse(null);
         assert client != null;
-        client.setFirstName(client.getFirstName().toUpperCase(Locale.ROOT));
-        client.setLastName(client.getLastName().toUpperCase(Locale.ROOT));
-        client.setEmail(client.getEmail().toUpperCase(Locale.ROOT));
+        client.setFirstName(client.getFirstName().toLowerCase(Locale.ROOT));
+        client.setLastName(client.getLastName().toLowerCase(Locale.ROOT));
+        client.setEmail(client.getEmail().toLowerCase(Locale.ROOT));
 
         return client;
     }
