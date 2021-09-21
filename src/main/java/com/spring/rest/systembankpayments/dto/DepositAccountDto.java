@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import java.util.Date;
 
@@ -26,7 +27,7 @@ public class DepositAccountDto {
     private String number;
 
     @JsonProperty("type")
-    @NotBlank
+    @NotNull
     @Enumerated(EnumType.STRING)
     private TypeAccount type;
 
@@ -35,10 +36,10 @@ public class DepositAccountDto {
     private Date expirationDate;
 
     @JsonProperty("amount")
-    @NotBlank
+    @NotNull
     private int amount;
 
     @JsonProperty("interestRate")
-    @NotBlank
+    @NotNull
     private double interestRate;
 }

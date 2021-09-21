@@ -1,5 +1,6 @@
 package com.spring.rest.systembankpayments.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.spring.rest.systembankpayments.entity.Type.TypeAccount;
 import lombok.Getter;
@@ -8,6 +9,7 @@ import lombok.Setter;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import java.util.Date;
 
@@ -25,27 +27,32 @@ public class CreditAccountDto {
     private String number;
 
     @JsonProperty("type")
-    @NotBlank
+    @NotNull
     @Enumerated(EnumType.STRING)
     private TypeAccount type;
 
     @JsonProperty("expirationDate")
     @NotBlank
+    @JsonFormat(pattern = "yyyy-MM-dd", shape = JsonFormat.Shape.STRING)
     private Date expirationDate;
 
     @JsonProperty("creditLimit")
-    @NotBlank
+    @NotNull
+    @JsonFormat(shape= JsonFormat.Shape.STRING)
     private int creditLimit; //кредитный лимит
 
     @JsonProperty("interestRate")
-    @NotBlank
+    @NotNull
+    @JsonFormat(shape= JsonFormat.Shape.STRING)
     private double interestRate; //процентная ставка
 
     @JsonProperty("currentDebt")
-    @NotBlank
+    @NotNull
+    @JsonFormat(shape= JsonFormat.Shape.STRING)
     private int currentDebt; //текущая задолженность
 
     @JsonProperty("accruedInterest")
-    @NotBlank
+    @NotNull
+    @JsonFormat(shape= JsonFormat.Shape.STRING)
     private double accruedInterest; //начисленные проценты
 }
