@@ -17,6 +17,8 @@ public interface ClientMapper {
 
     ClientDto clientToClientDto(Client client);
 
+    Client clientDtoToClient(ClientDto clientDto);
+
     List<ClientDto> clientsToClientDto(List<Client> clients);
 
     @Mapping(target = "creditAccounts", source = "client.creditAccount")
@@ -26,13 +28,19 @@ public interface ClientMapper {
 
     MainAccountDto mainAccountToClientDto(MainAccount mainAccount);
 
+    MainAccount mainAccountDtoToMainAccount(MainAccountDto mainAccountDto);
+
     List<MainAccountDto> mainAccountsDto(List<MainAccount> mainAccounts);
 
     DepositAccountDto depositAccountToClientDto(DepositAccount depositAccount);
 
+    DepositAccount depositAccountDtoToDepositAccount(DepositAccountDto depositAccountDto);
+
     List<DepositAccountDto> depositAccountsDto(List<DepositAccount> depositAccounts);
 
     CreditAccountDto creditAccountToClientDto(CreditAccount creditAccount);
+
+    CreditAccount creditAccountDtoToCreditAccount(CreditAccountDto creditAccountDto);
 
     List<CreditAccountDto> creditAccountsDto(List<CreditAccount> creditAccounts);
 }

@@ -15,25 +15,24 @@ import java.util.List;
 public class MainAccountController {
 
     private final MainAccountService mainAccount;
-    private ClientMapper clientMapper;
 
     @GetMapping("/getMainAccount/{id}")
     public MainAccountDto getMainAccount(@PathVariable long id){
-        return clientMapper.mainAccountToClientDto(mainAccount.findById(id));
+        return mainAccount.findById(id);
     }
 
     @GetMapping("/showAllMainAccount")
     public List<MainAccountDto> showAllMainAccount(){
-        return clientMapper.mainAccountsDto(mainAccount.findAll());
+        return mainAccount.findAll();
     }
 
     @PostMapping("/addNewMainAccount")
-    public MainAccount addNewMainAccount(@RequestBody MainAccount main){
+    public MainAccountDto addNewMainAccount(@RequestBody MainAccountDto main){
         return mainAccount.save(main);
     }
 
     @PutMapping("/updateMainAccount")
-    public MainAccount updateMainAccount(@RequestBody MainAccount main){
+    public MainAccountDto updateMainAccount(@RequestBody MainAccountDto main){
         return mainAccount.save(main);
     }
 

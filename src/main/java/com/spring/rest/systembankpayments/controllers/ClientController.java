@@ -16,32 +16,24 @@ import java.util.List;
 public class ClientController {
 
     private final ClientService clientService;
-    private ClientMapper clientMapper;
 
     @GetMapping
     public List<ClientDto> showAllClient(){
-        return clientMapper.clientsToClientDto(clientService.findAll());
+        return clientService.findAll();
     }
 
     @GetMapping("/getClient/{id}")
-    public ClientDto getClient(@PathVariable long id){
-
-        return clientMapper.clientToClientDto(clientService.findById(id));
-    }
-
-    @GetMapping("/getFullClient/{id}")
-    public ClientAllDto getFullClient(@PathVariable long id){
-
-        return clientMapper.clientAllToClientDto(clientService.findById(id));
+    public ClientAllDto getClient(@PathVariable long id){
+        return clientService.findById(id);
     }
 
     @PostMapping("/addNewClient")
-    public Client addNewClient(@RequestBody Client client){
+    public ClientDto addNewClient(@RequestBody ClientDto client){
         return clientService.save(client);
     }
 
     @PutMapping("/updateClient")
-    public Client updateClient(@RequestBody Client client){
+    public ClientDto updateClient(@RequestBody ClientDto client){
         return  clientService.save(client);
     }
 

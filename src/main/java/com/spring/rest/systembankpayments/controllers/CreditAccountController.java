@@ -15,25 +15,24 @@ import java.util.List;
 public class CreditAccountController {
 
     private final CreditAccountService creditAccount;
-    private ClientMapper clientMapper;
 
     @RequestMapping("/getCreditAccount/{id}")
     public CreditAccountDto getCreditAccount(@PathVariable long id){
-        return clientMapper.creditAccountToClientDto(creditAccount.findById(id));
+        return creditAccount.findById(id);
     }
 
     @RequestMapping("/showAllCreditAccount")
     public List<CreditAccountDto> showAllCreditAccount(){
-        return clientMapper.creditAccountsDto(creditAccount.findAll());
+        return creditAccount.findAll();
     }
 
     @PostMapping("/addCreditAccount")
-    public CreditAccount addCreditAccount(@RequestBody CreditAccount credit){
+    public CreditAccountDto addCreditAccount(@RequestBody CreditAccountDto credit){
         return creditAccount.save(credit);
     }
 
     @PutMapping("/updateCreditAccount")
-    public CreditAccount updateCreditAccount(@RequestBody CreditAccount credit){
+    public CreditAccountDto updateCreditAccount(@RequestBody CreditAccountDto credit){
         return creditAccount.save(credit);
     }
 

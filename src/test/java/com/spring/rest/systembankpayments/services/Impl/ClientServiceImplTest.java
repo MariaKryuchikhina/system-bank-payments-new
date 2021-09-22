@@ -22,88 +22,88 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-@ExtendWith(MockitoExtension.class)
-class ClientServiceImplTest {
-
-    @Mock
-    private ClientRepository clientRepository;
-    private ClientService clientService;
-
-    Client client1 = new Client(1L, "Anna", "Vasileva",
-            "65445434", "anna@gmail.com");
-    Client client2 = new Client(2L, "Anton", "Ivanov",
-            "756543", "anton@gmail.com");
-    Client client3 = new Client(3L, "Alla", "Ivanova",
-            "12134", "alla@gmail.com");
-    List<Client> clients1 = List.of(client1, client2, client3);
-
-    @BeforeEach
-    void setUp() {
-        clientService = new ClientServiceImpl(clientRepository);
-    }
-
-    @Test
-    void findAll() {
-        Mockito.when((clientService.findAll())).thenReturn(clients1);
-
-        List<Client> clients2 = clientService.findAll();
-        verify(clientRepository).findAll();
-
-        assertNotNull(clients2);
-    }
-
-    @Test
-    void findById() {
-        Mockito.when(clientRepository.findById(client1.getIdClient())).thenReturn(Optional.of(client1));
-
-        long id = 1L;
-        clientService.findById(id);
-        verify(clientRepository).findById(id);
-    }
-
+//@ExtendWith(MockitoExtension.class)
+//class ClientServiceImplTest {
+//
+//    @Mock
+//    private ClientRepository clientRepository;
+//    private ClientService clientService;
+//
+//    Client client1 = new Client(1L, "Anna", "Vasileva",
+//            "65445434", "anna@gmail.com");
+//    Client client2 = new Client(2L, "Anton", "Ivanov",
+//            "756543", "anton@gmail.com");
+//    Client client3 = new Client(3L, "Alla", "Ivanova",
+//            "12134", "alla@gmail.com");
+//    List<Client> clients1 = List.of(client1, client2, client3);
+//
+//    @BeforeEach
+//    void setUp() {
+//        clientService = new ClientServiceImpl(clientRepository);
+//    }
+//
 //    @Test
-//    void findByIdNotFound(){
-//        Mockito.when(clientRepository.findById(client1.getIdClient())).thenReturn(empty());
+//    void findAll() {
+//        Mockito.when((clientService.findAll())).thenReturn(clients1);
 //
-//        Client client = clientService.findById(1L);
+//        List<Client> clients2 = clientService.findAll();
+//        verify(clientRepository).findAll();
 //
-//        assertNull(client);
+//        assertNotNull(clients2);
 //    }
-
-    @Test
-    void save() {
-        Client client1 = Client.builder()
-                .idClient(5L)
-                .firstName("Olya")
-                .lastName("Demina")
-                .email("olechka@gmail.com")
-                .phoneNumber("121323").build();
-
-        clientService.save(client1);
-
-        ArgumentCaptor<Client> clientArgumentCaptor = ArgumentCaptor.forClass(Client.class);
-
-        verify(clientRepository).save(clientArgumentCaptor.capture());
-
-        Client captureClient = clientArgumentCaptor.getValue();
-
-        assertThat(captureClient).isEqualTo(client1);
-        assertThat(captureClient.getEmail()).isEqualTo("olechka@gmail.com");
-        assertNotNull(captureClient);
-    }
-
-    @Test
-    void deleteById() {
-        long id = 5;
-        clientService.deleteById(id);
-        verify(clientRepository).deleteById(id);
-    }
-
-//    void deleteByIdNotFound(){
-////        Mockito.when(clientRepository.deleteById()).thenReturn(empty());
 //
-//        Client client = clientService.deleteById(1L);
+//    @Test
+//    void findById() {
+//        Mockito.when(clientRepository.findById(client1.getIdClient())).thenReturn(Optional.of(client1));
 //
-//        assertNull(client);
+//        long id = 1L;
+//        clientService.findById(id);
+//        verify(clientRepository).findById(id);
 //    }
-}
+//
+////    @Test
+////    void findByIdNotFound(){
+////        Mockito.when(clientRepository.findById(client1.getIdClient())).thenReturn(empty());
+////
+////        Client client = clientService.findById(1L);
+////
+////        assertNull(client);
+////    }
+//
+//    @Test
+//    void save() {
+//        Client client1 = Client.builder()
+//                .idClient(5L)
+//                .firstName("Olya")
+//                .lastName("Demina")
+//                .email("olechka@gmail.com")
+//                .phoneNumber("121323").build();
+//
+//        clientService.save(client1);
+//
+//        ArgumentCaptor<Client> clientArgumentCaptor = ArgumentCaptor.forClass(Client.class);
+//
+//        verify(clientRepository).save(clientArgumentCaptor.capture());
+//
+//        Client captureClient = clientArgumentCaptor.getValue();
+//
+//        assertThat(captureClient).isEqualTo(client1);
+//        assertThat(captureClient.getEmail()).isEqualTo("olechka@gmail.com");
+//        assertNotNull(captureClient);
+//    }
+//
+//    @Test
+//    void deleteById() {
+//        long id = 5;
+//        clientService.deleteById(id);
+//        verify(clientRepository).deleteById(id);
+//    }
+//
+////    void deleteByIdNotFound(){
+//////        Mockito.when(clientRepository.deleteById()).thenReturn(empty());
+////
+////        Client client = clientService.deleteById(1L);
+////
+////        assertNull(client);
+////    }
+//}

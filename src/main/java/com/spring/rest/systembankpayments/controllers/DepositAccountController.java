@@ -15,25 +15,24 @@ import java.util.List;
 public class DepositAccountController {
 
     private final DepositAccountService depositAccount;
-    private ClientMapper clientMapper;
 
     @RequestMapping("/getDepositAccount/{id}")
     public DepositAccountDto getDepositAccount(@PathVariable long id){
-        return clientMapper.depositAccountToClientDto(depositAccount.findById(id));
+        return depositAccount.findById(id);
     }
 
     @RequestMapping("/showAllDepositAccount")
     public List<DepositAccountDto> showAllDepositAccount(){
-        return clientMapper.depositAccountsDto(depositAccount.findAll());
+       return depositAccount.findAll();
     }
 
     @PostMapping("/addDepositAccount")
-    public DepositAccount addDepositAccount(@RequestBody DepositAccount deposit){
+    public DepositAccountDto addDepositAccount(@RequestBody DepositAccountDto deposit){
         return depositAccount.save(deposit);
     }
 
     @PutMapping("/updateDepositAccount")
-    public DepositAccount updateDepositAccount(@RequestBody DepositAccount deposit){
+    public DepositAccountDto updateDepositAccount(@RequestBody DepositAccountDto deposit){
         return depositAccount.save(deposit);
     }
 
