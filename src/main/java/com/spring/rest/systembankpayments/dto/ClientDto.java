@@ -1,15 +1,15 @@
 package com.spring.rest.systembankpayments.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Null;
-import javax.validation.constraints.Size;
 
-@Setter
-@Getter
+import javax.validation.constraints.*;
+
+@Data
+@Builder
 public class ClientDto {
 
     @JsonProperty("idClient")
@@ -29,6 +29,7 @@ public class ClientDto {
     @JsonProperty("phoneNumber")
     @NotBlank
     @Size(max = 16)
+    @Pattern(regexp = "\\+7[0-9]{10}", message = "Телефонный номер должен начинаться с +7, затем - 10 цифр")
     private String phoneNumber;
 
     @JsonProperty("email")

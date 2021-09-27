@@ -2,7 +2,7 @@ package com.spring.rest.systembankpayments.services.Impl;
 
 import com.spring.rest.systembankpayments.dto.ClientAllDto;
 import com.spring.rest.systembankpayments.dto.ClientDto;
-import com.spring.rest.systembankpayments.entity.Client;
+import com.spring.rest.systembankpayments.handling.ClientNotFoundException;
 import com.spring.rest.systembankpayments.mapper.ClientMapper;
 import com.spring.rest.systembankpayments.repositories.ClientRepository;
 import com.spring.rest.systembankpayments.services.ClientService;
@@ -29,19 +29,40 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     @Transactional
-    public ClientAllDto findById(Long id) {
-        return clientMapper.clientAllToClientDto(clientRepository.getById(id));
+    public ClientAllDto findById(Long id) throws ClientNotFoundException {
+        if(clientRepository.findById(id).isEmpty()) {
+            log.error("Клиента с id: {} не существует", id);
+            throw new ClientNotFoundException();
+        }
+        else{
+            log.info("Вывод клиента с id: {}", id);
+            return clientMapper.clientAllToClientDto(clientRepository.getById(id));
+        }
     }
 
     @Override
     @Transactional
-    public ClientDto save(ClientDto object) {
-        return clientMapper.clientToClientDto(clientRepository.save(clientMapper.clientDtoToClient(object)));
+    public ClientDto save(ClientDto object) throws ClientNotFoundException {
+        if(clientRepository.findById(object.getIdClient()).isEmpty()){
+            log.error("Информация о клиенте {} не заполнена!", object);
+            throw new ClientNotFoundException();
+        }
+        else{
+            log.info("Информация о клиенте {} сохранена!", object);
+            return clientMapper.clientToClientDto(clientRepository.save(clientMapper.clientDtoToClient(object)));
+        }
     }
 
     @Override
     @Transactional
     public void deleteById(Long id) {
-        clientRepository.deleteById(id);
+        if(clientRepository.findById(id).isEmpty()) {
+            log.error("Клиента с id: {} не существует", id);
+            throw new ClientNotFoundException();
+        }
+        else{
+            log.info("Удаление клиента с id: {}", id);
+            clientRepository.deleteById(id);
+        }
     }
 }

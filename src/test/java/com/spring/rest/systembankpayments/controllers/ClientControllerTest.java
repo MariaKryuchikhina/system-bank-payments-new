@@ -1,6 +1,7 @@
 package com.spring.rest.systembankpayments.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.spring.rest.systembankpayments.dto.ClientDto;
 import com.spring.rest.systembankpayments.entity.Client;
 import com.spring.rest.systembankpayments.services.ClientService;
 import org.junit.jupiter.api.Test;
@@ -20,39 +21,53 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.hamcrest.Matchers.*;
 
-//@WebMvcTest(ClientController.class)
-//class ClientControllerTest {
-//
-//    @Autowired
-//    MockMvc mockMvc;
-//
-//    @Autowired
-//    ObjectMapper mapper;
-//
-//    @MockBean
-//    ClientService clientService;
-//
-//    Client client1 = new Client(1, "Anna", "Vasileva",
-//            "65445434", "anna@gmail.com");
-//    Client client2 = new Client(2L, "Anton", "Ivanov",
-//            "756543", "anton@gmail.com");
-//    Client client3 = new Client(3L, "Alla", "Ivanova",
-//            "12134", "alla@gmail.com");
-//
-//    @Test
-//    void showAllClient() throws Exception {
-//        List<Client> clients = List.of(client1, client2, client3);
-//
-//        Mockito.when(clientService.findAll()).thenReturn(clients);
-//
-//        mockMvc.perform(MockMvcRequestBuilders
-//                .get("/client/")
-//                .contentType(MediaType.APPLICATION_JSON))
-//                .andExpect(status().isOk())
-//                .andExpect(jsonPath("$", hasSize(3)))
-//                .andExpect((ResultMatcher) jsonPath("$[1].firstName", is("Anton")));
-//    }
-//
+@WebMvcTest(ClientController.class)
+class ClientControllerTest {
+
+    @Autowired
+    MockMvc mockMvc;
+
+    @Autowired
+    ObjectMapper mapper;
+
+    @MockBean
+    ClientService clientService;
+
+    ClientDto client1 = ClientDto.builder()
+            .idClient(1).firstName("Lina")
+            .lastName("Ivanova")
+            .email("lina12@gmail.com")
+            .phoneNumber("+789651235412")
+            .build();
+
+    ClientDto client2 = ClientDto.builder()
+            .idClient(2).firstName("Anton")
+            .lastName("Ivanov")
+            .email("anton@gmail.com")
+            .phoneNumber("+789651232652")
+            .build();
+
+    ClientDto client3 = ClientDto.builder()
+            .idClient(3).firstName("Ivan")
+            .lastName("Petrov")
+            .email("ivan@gmail.com")
+            .phoneNumber("+789129541287")
+            .build();
+
+    @Test
+    void showAllClient() throws Exception {
+        List<ClientDto> clients = List.of(client1, client2, client3);
+
+        Mockito.when(clientService.findAll()).thenReturn(clients);
+
+        mockMvc.perform(MockMvcRequestBuilders
+                .get("/client/")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(3)))
+                .andExpect((ResultMatcher) jsonPath("$[1].firstName", is("Anton")));
+    }
+
 //    @Test
 //    void getClient() throws Exception {
 //        Mockito.when(clientService.findById(client1.getIdClient())).thenReturn(client1);
@@ -64,11 +79,11 @@ import static org.hamcrest.Matchers.*;
 //                .andExpect(jsonPath("$", notNullValue()))
 //                .andExpect(jsonPath("$.firstName", is("Anna")));
 //    }
-//
+
 //    @Test
 //    void addNewClient() throws Exception {
 //
-//        Client client = Client.builder()
+//        ClientDto client = ClientDto.builder()
 //                .idClient(1)
 //                .firstName("Lera")
 //                .lastName("Filina")
@@ -89,10 +104,10 @@ import static org.hamcrest.Matchers.*;
 ////                .andExpect(jsonPath("$", notNullValue()))
 ////                .andExpect(jsonPath("$[0].firstName", is("Lera")));
 //    }
-//
+
 //    @Test
 //    void updateClient() throws Exception {
-//        Client client = Client.builder()
+//        ClientDto client = ClientDto.builder()
 //                .idClient(1)
 //                .firstName("Lera")
 //                .lastName("Filina")
@@ -122,4 +137,4 @@ import static org.hamcrest.Matchers.*;
 //                .andExpect(status().isOk());
 //
 //    }
-//}
+}

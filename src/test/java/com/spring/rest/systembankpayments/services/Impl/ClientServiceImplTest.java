@@ -1,5 +1,6 @@
 package com.spring.rest.systembankpayments.services.Impl;
 
+import com.spring.rest.systembankpayments.dto.ClientDto;
 import com.spring.rest.systembankpayments.entity.Client;
 import com.spring.rest.systembankpayments.repositories.ClientRepository;
 import com.spring.rest.systembankpayments.services.ClientService;
@@ -22,21 +23,43 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-//@ExtendWith(MockitoExtension.class)
-//class ClientServiceImplTest {
-//
-//    @Mock
-//    private ClientRepository clientRepository;
-//    private ClientService clientService;
-//
+@ExtendWith(MockitoExtension.class)
+class ClientServiceImplTest {
+
+    @Mock
+    private ClientRepository clientRepository;
+    private ClientService clientService;
+
 //    Client client1 = new Client(1L, "Anna", "Vasileva",
 //            "65445434", "anna@gmail.com");
 //    Client client2 = new Client(2L, "Anton", "Ivanov",
 //            "756543", "anton@gmail.com");
 //    Client client3 = new Client(3L, "Alla", "Ivanova",
 //            "12134", "alla@gmail.com");
-//    List<Client> clients1 = List.of(client1, client2, client3);
-//
+
+    ClientDto client1 = ClientDto.builder()
+            .idClient(1).firstName("Lina")
+            .lastName("Ivanova")
+            .email("lina12@gmail.com")
+            .phoneNumber("+789651235412")
+            .build();
+
+    ClientDto client2 = ClientDto.builder()
+            .idClient(2).firstName("Anton")
+            .lastName("Ivanov")
+            .email("anton@gmail.com")
+            .phoneNumber("+789651232652")
+            .build();
+
+    ClientDto client3 = ClientDto.builder()
+            .idClient(3).firstName("Ivan")
+            .lastName("Petrov")
+            .email("ivan@gmail.com")
+            .phoneNumber("+789129541287")
+            .build();
+
+    List<ClientDto> clients1 = List.of(client1, client2, client3);
+
 //    @BeforeEach
 //    void setUp() {
 //        clientService = new ClientServiceImpl(clientRepository);
@@ -46,7 +69,7 @@ import static org.mockito.Mockito.when;
 //    void findAll() {
 //        Mockito.when((clientService.findAll())).thenReturn(clients1);
 //
-//        List<Client> clients2 = clientService.findAll();
+//        List<ClientDto> clients2 = clientService.findAll();
 //        verify(clientRepository).findAll();
 //
 //        assertNotNull(clients2);
@@ -98,12 +121,12 @@ import static org.mockito.Mockito.when;
 //        clientService.deleteById(id);
 //        verify(clientRepository).deleteById(id);
 //    }
+
+//    void deleteByIdNotFound(){
+////        Mockito.when(clientRepository.deleteById()).thenReturn(empty());
 //
-////    void deleteByIdNotFound(){
-//////        Mockito.when(clientRepository.deleteById()).thenReturn(empty());
-////
-////        Client client = clientService.deleteById(1L);
-////
-////        assertNull(client);
-////    }
-//}
+//        Client client = clientService.deleteById(1L);
+//
+//        assertNull(client);
+//    }
+}

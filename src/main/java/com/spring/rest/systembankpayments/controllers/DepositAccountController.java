@@ -7,6 +7,7 @@ import com.spring.rest.systembankpayments.services.DepositAccountService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -27,12 +28,12 @@ public class DepositAccountController {
     }
 
     @PostMapping("/addDepositAccount")
-    public DepositAccountDto addDepositAccount(@RequestBody DepositAccountDto deposit){
+    public DepositAccountDto addDepositAccount(@Valid @RequestBody DepositAccountDto deposit){
         return depositAccount.save(deposit);
     }
 
     @PutMapping("/updateDepositAccount")
-    public DepositAccountDto updateDepositAccount(@RequestBody DepositAccountDto deposit){
+    public DepositAccountDto updateDepositAccount(@Valid @RequestBody DepositAccountDto deposit){
         return depositAccount.save(deposit);
     }
 

@@ -7,6 +7,7 @@ import com.spring.rest.systembankpayments.services.CreditAccountService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -27,12 +28,12 @@ public class CreditAccountController {
     }
 
     @PostMapping("/addCreditAccount")
-    public CreditAccountDto addCreditAccount(@RequestBody CreditAccountDto credit){
+    public CreditAccountDto addCreditAccount(@Valid @RequestBody CreditAccountDto credit){
         return creditAccount.save(credit);
     }
 
     @PutMapping("/updateCreditAccount")
-    public CreditAccountDto updateCreditAccount(@RequestBody CreditAccountDto credit){
+    public CreditAccountDto updateCreditAccount(@Valid @RequestBody CreditAccountDto credit){
         return creditAccount.save(credit);
     }
 

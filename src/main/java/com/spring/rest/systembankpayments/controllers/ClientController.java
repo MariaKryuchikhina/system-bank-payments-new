@@ -2,8 +2,7 @@ package com.spring.rest.systembankpayments.controllers;
 
 import com.spring.rest.systembankpayments.dto.ClientAllDto;
 import com.spring.rest.systembankpayments.dto.ClientDto;
-import com.spring.rest.systembankpayments.entity.Client;
-import com.spring.rest.systembankpayments.mapper.ClientMapper;
+import com.spring.rest.systembankpayments.handling.ClientNotFoundException;
 import com.spring.rest.systembankpayments.services.ClientService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -23,22 +22,22 @@ public class ClientController {
     }
 
     @GetMapping("/getClient/{id}")
-    public ClientAllDto getClient(@PathVariable long id){
+    public ClientAllDto getClient(@PathVariable long id) throws ClientNotFoundException {
         return clientService.findById(id);
     }
 
     @PostMapping("/addNewClient")
-    public ClientDto addNewClient(@RequestBody ClientDto client){
+    public ClientDto addNewClient(@Valid @RequestBody ClientDto client){
         return clientService.save(client);
     }
 
     @PutMapping("/updateClient")
-    public ClientDto updateClient(@RequestBody ClientDto client){
+    public ClientDto updateClient(@Valid @RequestBody ClientDto client){
         return  clientService.save(client);
     }
 
     @DeleteMapping("/deleteClient/{id}")
-    public void deleteClient(@PathVariable long id){
+    public void deleteClient(@PathVariable long id) throws ClientNotFoundException {
         clientService.deleteById(id);
     }
 

@@ -7,6 +7,7 @@ import com.spring.rest.systembankpayments.services.MainAccountService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -27,12 +28,12 @@ public class MainAccountController {
     }
 
     @PostMapping("/addNewMainAccount")
-    public MainAccountDto addNewMainAccount(@RequestBody MainAccountDto main){
+    public MainAccountDto addNewMainAccount(@Valid @RequestBody MainAccountDto main){
         return mainAccount.save(main);
     }
 
     @PutMapping("/updateMainAccount")
-    public MainAccountDto updateMainAccount(@RequestBody MainAccountDto main){
+    public MainAccountDto updateMainAccount(@Valid @RequestBody MainAccountDto main){
         return mainAccount.save(main);
     }
 
