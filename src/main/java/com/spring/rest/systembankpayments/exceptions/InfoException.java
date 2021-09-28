@@ -1,11 +1,6 @@
-package com.spring.rest.systembankpayments.handling;
+package com.spring.rest.systembankpayments.exceptions;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-
-@ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "No such client")
-public class ClientNotFoundException extends RuntimeException{
+public class InfoException extends RuntimeException{
     /**
      * Constructs a new runtime exception with the specified detail message.
      * The cause is not initialized, and may subsequently be initialized by a
@@ -14,7 +9,7 @@ public class ClientNotFoundException extends RuntimeException{
      * @param message the detail message. The detail message is saved for
      *                later retrieval by the {@link #getMessage()} method.
      */
-    public ClientNotFoundException(String message) {
+    public InfoException(String message) {
         super(message);
     }
 
@@ -32,11 +27,7 @@ public class ClientNotFoundException extends RuntimeException{
      *                unknown.)
      * @since 1.4
      */
-    public ClientNotFoundException(String message, Throwable cause) {
+    public InfoException(String message, Throwable cause) {
         super(message, cause);
-    }
-
-    public ClientNotFoundException() {
-
     }
 }

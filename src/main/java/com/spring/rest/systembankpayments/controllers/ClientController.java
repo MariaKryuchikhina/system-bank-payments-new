@@ -2,7 +2,7 @@ package com.spring.rest.systembankpayments.controllers;
 
 import com.spring.rest.systembankpayments.dto.ClientAllDto;
 import com.spring.rest.systembankpayments.dto.ClientDto;
-import com.spring.rest.systembankpayments.handling.ClientNotFoundException;
+import com.spring.rest.systembankpayments.exceptions.ClientNotFoundException;
 import com.spring.rest.systembankpayments.services.ClientService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +17,7 @@ public class ClientController {
     private final ClientService clientService;
 
     @GetMapping
-    public List<ClientDto> showAllClient(){
+    public List<ClientDto> showAllClient() throws ClientNotFoundException{
         return clientService.findAll();
     }
 
@@ -32,7 +32,7 @@ public class ClientController {
     }
 
     @PutMapping("/updateClient")
-    public ClientDto updateClient(@Valid @RequestBody ClientDto client){
+    public ClientDto updateClient(@Valid @RequestBody ClientDto client) throws ClientNotFoundException{
         return  clientService.save(client);
     }
 

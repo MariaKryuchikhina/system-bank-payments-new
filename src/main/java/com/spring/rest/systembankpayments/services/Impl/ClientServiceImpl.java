@@ -2,7 +2,7 @@ package com.spring.rest.systembankpayments.services.Impl;
 
 import com.spring.rest.systembankpayments.dto.ClientAllDto;
 import com.spring.rest.systembankpayments.dto.ClientDto;
-import com.spring.rest.systembankpayments.handling.ClientNotFoundException;
+import com.spring.rest.systembankpayments.exceptions.ClientNotFoundException;
 import com.spring.rest.systembankpayments.mapper.ClientMapper;
 import com.spring.rest.systembankpayments.repositories.ClientRepository;
 import com.spring.rest.systembankpayments.services.ClientService;
@@ -22,9 +22,16 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     @Transactional
-    public List<ClientDto> findAll() {
-        log.info("Вывод всех клиентов");
-        return clientMapper.clientsToClientDto(clientRepository.findAll());
+    public List<ClientDto> findAll()  throws ClientNotFoundException {
+        if(clientRepository.findAll().isEmpty()){
+            log.error("Нет клиентов!");
+            throw new ClientNotFoundException();
+        }
+        else{
+            log.info("Вывод всех клиентов");
+            return clientMapper.clientsToClientDto(clientRepository.findAll());
+        }
+
     }
 
     @Override
@@ -32,7 +39,7 @@ public class ClientServiceImpl implements ClientService {
     public ClientAllDto findById(Long id) throws ClientNotFoundException {
         if(clientRepository.findById(id).isEmpty()) {
             log.error("Клиента с id: {} не существует", id);
-            throw new ClientNotFoundException();
+            throw new ClientNotFoundException("Клиента не найден!");
         }
         else{
             log.info("Вывод клиента с id: {}", id);
@@ -58,7 +65,7 @@ public class ClientServiceImpl implements ClientService {
     public void deleteById(Long id) {
         if(clientRepository.findById(id).isEmpty()) {
             log.error("Клиента с id: {} не существует", id);
-            throw new ClientNotFoundException();
+            throw new ClientNotFoundException("Клиента не найден!");
         }
         else{
             log.info("Удаление клиента с id: {}", id);
