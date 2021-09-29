@@ -27,12 +27,12 @@ public class ClientController {
     }
 
     @PostMapping("/addNewClient")
-    public ClientDto addNewClient(@Valid @RequestBody ClientDto client){
+    public ClientDto addNewClient(@RequestBody ClientDto client){
         return clientService.save(client);
     }
 
     @PutMapping("/updateClient")
-    public ClientDto updateClient(@Valid @RequestBody ClientDto client) throws ClientNotFoundException{
+    public ClientDto updateClient(@Valid @RequestBody ClientDto client){
         return  clientService.save(client);
     }
 

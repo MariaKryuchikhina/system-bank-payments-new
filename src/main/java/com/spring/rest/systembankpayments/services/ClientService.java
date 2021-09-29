@@ -12,7 +12,8 @@ public interface ClientService{
 
     ClientAllDto findById(Long id) throws ClientNotFoundException;
 
-    ClientDto save(ClientDto object) throws ClientNotFoundException;
+    ClientDto save(ClientDto object);
 
     void deleteById(Long id) throws ClientNotFoundException;
+
 }

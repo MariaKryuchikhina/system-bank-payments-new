@@ -49,15 +49,11 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     @Transactional
-    public ClientDto save(ClientDto object) throws ClientNotFoundException {
-        if(clientRepository.findById(object.getIdClient()).isEmpty()){
-            log.error("Информация о клиенте {} не заполнена!", object);
-            throw new ClientNotFoundException();
-        }
-        else{
+    public ClientDto save(ClientDto object) {
+
             log.info("Информация о клиенте {} сохранена!", object);
             return clientMapper.clientToClientDto(clientRepository.save(clientMapper.clientDtoToClient(object)));
-        }
+
     }
 
     @Override

@@ -29,11 +29,11 @@ public class ClientDto {
     @JsonProperty("phoneNumber")
     @NotBlank
     @Size(max = 16)
-    @Pattern(regexp = "\\+7[0-9]{10}", message = "Телефонный номер должен начинаться с +7, затем - 10 цифр")
+//    @Pattern(regexp = "\\+7[0-9]{10}", message = "Телефонный номер должен начинаться с +7, затем - 10 цифр")
     private String phoneNumber;
 
     @JsonProperty("email")
     @NotBlank
-    @Email
+//    @Email
     private String email;
 }
