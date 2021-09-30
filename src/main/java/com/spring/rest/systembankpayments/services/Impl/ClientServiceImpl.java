@@ -6,7 +6,6 @@ import com.spring.rest.systembankpayments.exceptions.ClientNotFoundException;
 import com.spring.rest.systembankpayments.mapper.ClientMapper;
 import com.spring.rest.systembankpayments.repositories.ClientRepository;
 import com.spring.rest.systembankpayments.services.ClientService;
-import com.spring.rest.systembankpayments.validations.ClientValidation;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;

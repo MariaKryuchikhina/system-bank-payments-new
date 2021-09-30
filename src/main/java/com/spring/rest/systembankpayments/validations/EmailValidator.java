@@ -4,8 +4,7 @@ import com.spring.rest.systembankpayments.dto.ClientDto;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class PhoneNumberValidationStep implements SimpleValidation{
-
+public class EmailValidator implements SimpleValidation {
 
     @Override
     public boolean validate(ClientDto client) {
